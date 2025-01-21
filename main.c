@@ -1,6 +1,10 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-static char input[2048]; //Variable thats starts (once) at the start of the program, with file scope.
+#include <editline/readline.h>
+#include <editline/history.h>
+
+//static char input[2048]; Variable thats starts (once) at the start of the program, with file scope.
 
                          
 int main(int argc, char** argv){
@@ -9,11 +13,16 @@ int main(int argc, char** argv){
     puts("Press Ctrl+c to Exit");
 
     while(1){
-        printf("Lispy> ");
-//        fputs("Lispy> " ); stdout is "standart output stream", so it's deafult output (In this case allow user to write and then pass that to stdin)
-        fgets(input, 2048, stdin); //stdin is "standart input stream", so it's deafult input (In this case take output form stidin and assined that to input variable)
+//      fputs("Lispy> " ); stdout is "standart output stream", so it's deafult output, fputs work just like fprint 
+//      fgets(input, 2048, stdin); stdin is "standart input stream", read a line of input from stdin into "input" 
+
+        char* input = readline("Lispy> ");
+
+        add_history(input);
 
         printf("No you're a %s", input);
+
+        free(input);
     }
     return 0;
 }
