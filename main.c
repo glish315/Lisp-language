@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include <editline/readline.h>
-#include <editline/history.h>
+#include <readline/readline.h> //Readline library because on NixOS it is easy to download.
+#include <readline/history.h>
 
 //static char input[2048]; Variable thats starts (once) at the start of the program, with file scope.
 
@@ -20,7 +20,7 @@ int main(int argc, char** argv){
 
         add_history(input);
 
-        printf("No you're a %s", input);
+        printf("No you're a %s\n", input);
 
         free(input);
     }
